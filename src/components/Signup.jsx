@@ -61,8 +61,9 @@ export default function Signup() {
       alert("Signup successful");
       navigate("/login");
     } catch (err) {
-      console.log(err, "error from signup");
-      setError("Singup Failed");
+      console.error("Signup error:", err);
+      const message = err?.response?.data?.message || "Signup failed.";
+      setError(message);
     } finally {
       setLoading(false);
     }
